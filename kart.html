@@ -81,6 +81,9 @@ footer nav a[aria-current]{color:var(--navy)}
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
 .kcard{position:relative;overflow:hidden;background:var(--surface);border:2px solid var(--line);border-radius:22px;padding:18px 16px 16px;display:flex;flex-direction:column;gap:12px;transition:transform .2s,border-color .2s,box-shadow .2s}
 .kcard:hover{transform:translateY(-4px);border-color:var(--caramel-ink);box-shadow:0 18px 34px -22px rgba(30,58,95,.55)}
+.kimg{display:block;margin:-18px -16px 2px;aspect-ratio:1/1;overflow:hidden;background:var(--sky);border-bottom:1px solid var(--line)}
+.kimg img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.kcard:hover .kimg img{transform:scale(1.04)}
 .kcard .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .kcard .tag{font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .kcard .chip{width:38px;height:28px;border-radius:6px;background:linear-gradient(135deg,#e9c27f,#c58b52);position:relative;overflow:hidden;flex:none}
@@ -101,7 +104,7 @@ footer nav a[aria-current]{color:var(--navy)}
 .steps b.n{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--on-navy);font-family:var(--f-display)}
 .alt{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
 .btn2{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;border:2px solid var(--navy);color:var(--navy);border-radius:999px;padding:8px 16px;white-space:nowrap}
-@media (max-width:760px){.pay{font-size:15px;padding:10px 10px;gap:6px}.kcard{padding:16px 12px 12px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:1fr}.cards .kcard:last-child{grid-column:1/-1}}
+@media (max-width:760px){.pay{font-size:15px;padding:10px 10px;gap:6px}.kcard{padding:16px 12px 12px}.kimg{margin:-16px -12px 2px}.cards .kcard:last-child .kimg{aspect-ratio:16/9}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:1fr}.cards .kcard:last-child{grid-column:1/-1}}
 @media (max-width:360px){.cards{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.kcard .chip::after{animation:none}}
 </style>
@@ -121,54 +124,63 @@ footer nav a[aria-current]{color:var(--navy)}
 <section aria-label="Bağış kartları">
   <div class="cards">
     <article class="kcard">
+      <a class="kimg" href="https://www.shopier.com/smamuhammedrecepbiradli/52398407" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_be2c4e08b42a3f89c23d0b4bef857f4a.jpg" alt="" width="458" height="458" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></a>
       <div class="top"><span class="tag">Bağış Kartı</span><span class="chip" aria-hidden="true"></span></div>
       <div class="amt">50<small>₺</small></div>
       <div class="lbl">Bir damla</div>
       <a class="pay" href="https://www.shopier.com/smamuhammedrecepbiradli/52398407" target="_blank" rel="noopener" aria-label="50 TL bağış kartı için Shopier ödeme sayfasına git">Ödeme Yap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </article>
     <article class="kcard">
+      <a class="kimg" href="https://www.shopier.com/smamuhammedrecepbiradli/52398462" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_5af6fa73e495eecce1b6039c5d593e65.jpg" alt="" width="458" height="458" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></a>
       <div class="top"><span class="tag">Bağış Kartı</span><span class="chip" aria-hidden="true"></span></div>
       <div class="amt">100<small>₺</small></div>
       <div class="lbl">Bir adım</div>
       <a class="pay" href="https://www.shopier.com/smamuhammedrecepbiradli/52398462" target="_blank" rel="noopener" aria-label="100 TL bağış kartı için Shopier ödeme sayfasına git">Ödeme Yap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </article>
     <article class="kcard">
+      <a class="kimg" href="https://www.shopier.com/smamuhammedrecepbiradli/52396400" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_9805e71cda55067d448bb533f665c9c4.jpg" alt="" width="458" height="458" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></a>
       <div class="top"><span class="tag">Bağış Kartı</span><span class="chip" aria-hidden="true"></span></div>
       <div class="amt">500<small>₺</small></div>
       <div class="lbl">Bir gülüş</div>
       <a class="pay" href="https://www.shopier.com/smamuhammedrecepbiradli/52396400" target="_blank" rel="noopener" aria-label="500 TL bağış kartı için Shopier ödeme sayfasına git">Ödeme Yap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </article>
     <article class="kcard">
+      <a class="kimg" href="https://www.shopier.com/smamuhammedrecepbiradli/52398285" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_cbf2c7a2fd3765b36741d41ed836cacc.jpg" alt="" width="458" height="458" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></a>
       <div class="top"><span class="tag">Bağış Kartı</span><span class="chip" aria-hidden="true"></span></div>
       <div class="amt">1.000<small>₺</small></div>
       <div class="lbl">Bir umut</div>
       <a class="pay" href="https://www.shopier.com/smamuhammedrecepbiradli/52398285" target="_blank" rel="noopener" aria-label="1.000 TL bağış kartı için Shopier ödeme sayfasına git">Ödeme Yap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </article>
     <article class="kcard">
+      <a class="kimg" href="https://www.shopier.com/smamuhammedrecepbiradli/52398351" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_63a0e74ae4d97a710e3fa0a228e257f7.jpg" alt="" width="458" height="458" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></a>
       <div class="top"><span class="tag">Bağış Kartı</span><span class="chip" aria-hidden="true"></span></div>
       <div class="amt">2.000<small>₺</small></div>
       <div class="lbl">Bir nefes</div>
       <a class="pay" href="https://www.shopier.com/smamuhammedrecepbiradli/52398351" target="_blank" rel="noopener" aria-label="2.000 TL bağış kartı için Shopier ödeme sayfasına git">Ödeme Yap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </article>
     <article class="kcard">
+      <a class="kimg" href="https://www.shopier.com/smamuhammedrecepbiradli/52398483" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_ecaddb26547559c966e99d403026c8ec.jpg" alt="" width="458" height="458" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></a>
       <div class="top"><span class="tag">Bağış Kartı</span><span class="chip" aria-hidden="true"></span></div>
       <div class="amt">4.000<small>₺</small></div>
       <div class="lbl">Güçlü destek</div>
       <a class="pay" href="https://www.shopier.com/smamuhammedrecepbiradli/52398483" target="_blank" rel="noopener" aria-label="4.000 TL bağış kartı için Shopier ödeme sayfasına git">Ödeme Yap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </article>
     <article class="kcard">
+      <a class="kimg" href="https://www.shopier.com/smamuhammedrecepbiradli/52398510" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_7b50df1da6a770e1f5fa777445584380.jpg" alt="" width="458" height="458" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></a>
       <div class="top"><span class="tag">Bağış Kartı</span><span class="chip" aria-hidden="true"></span></div>
       <div class="amt">6.000<small>₺</small></div>
       <div class="lbl">Büyük umut</div>
       <a class="pay" href="https://www.shopier.com/smamuhammedrecepbiradli/52398510" target="_blank" rel="noopener" aria-label="6.000 TL bağış kartı için Shopier ödeme sayfasına git">Ödeme Yap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </article>
     <article class="kcard">
+      <a class="kimg" href="https://www.shopier.com/smamuhammedrecepbiradli/52398531" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_a9a808e92701b9d855e478a6898f4b4c.jpg" alt="" width="458" height="458" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></a>
       <div class="top"><span class="tag">Bağış Kartı</span><span class="chip" aria-hidden="true"></span></div>
       <div class="amt">8.000<small>₺</small></div>
       <div class="lbl">Mucize desteği</div>
       <a class="pay" href="https://www.shopier.com/smamuhammedrecepbiradli/52398531" target="_blank" rel="noopener" aria-label="8.000 TL bağış kartı için Shopier ödeme sayfasına git">Ödeme Yap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </article>
     <article class="kcard">
+      <a class="kimg" href="https://www.shopier.com/smamuhammedrecepbiradli/52398556" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_2c11acb7dc69cf33f6b6acce2eaf0b74.jpg" alt="" width="458" height="458" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></a>
       <div class="top"><span class="tag">Bağış Kartı</span><span class="chip" aria-hidden="true"></span></div>
       <div class="amt">10.000<small>₺</small></div>
       <div class="lbl">Kahraman desteği</div>
