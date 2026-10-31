@@ -188,6 +188,14 @@ section{padding-block:clamp(44px,7vw,80px)}
 .warn{margin-top:12px;font-size:15px;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
 .warn svg{flex:none;width:20px;height:20px;margin-top:2px;color:var(--caramel)}
 
+.card-cta{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:14px;text-decoration:none;color:var(--fg);background:var(--surface);border:2px dashed var(--caramel-ink);border-radius:22px;padding:16px;transition:transform .2s,box-shadow .2s}
+.card-cta:hover{transform:translateY(-3px);box-shadow:0 16px 30px -20px rgba(30,58,95,.5)}
+.cc-ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--navy);color:var(--on-navy);flex:none}
+.cc-ic svg{width:28px;height:28px}
+.cc-txt{flex:1;min-width:0;display:grid;line-height:1.4}
+.cc-txt b{font-family:var(--f-display);font-size:clamp(18px,3vw,22px);color:var(--navy)}
+.cc-txt span{font-size:15px;color:var(--muted)}
+
 /* ===== TUTAR SEÇİCİ ===== */
 .amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .amounts .amt:last-child{grid-column:span 2}
@@ -314,7 +322,7 @@ footer .legal a:hover{color:var(--navy)}
     <svg class="heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 3 5 6.6 5c2 0 3.4 1.1 4.4 2.5C12 6.1 13.4 5 15.4 5 19 5 21 8.6 19.6 11.8 17.5 16.4 12 21 12 21z"/></svg>
     <span>Muhammed Recep<small>✓ Valilik İzinli Resmi Kampanya</small></span>
   </a>
-  <nav class="links"><a href="#bagis">IBAN</a><a href="#sma">SMA Nedir?</a><a href="#izin">Valilik İzni</a><a href="#sss">SSS</a><a href="https://instagram.com/sma.muhammedrecep.biradli" target="_blank" rel="noopener">Instagram</a></nav>
+  <nav class="links"><a href="#bagis">IBAN</a><a href="kart.html">Kartla Bağış</a><a href="#sma">SMA Nedir?</a><a href="#izin">Valilik İzni</a><a href="#sss">SSS</a><a href="https://instagram.com/sma.muhammedrecep.biradli" target="_blank" rel="noopener">Instagram</a></nav>
   <a class="btn btn-gold btn-sm pulse" href="#bagis">Bağış Yap</a>
 </div></header>
 
@@ -345,7 +353,7 @@ footer .legal a:hover{color:var(--navy)}
       <p class="hand in d4" style="font-size:clamp(30px,4.5vw,38px);line-height:1.1;margin-top:8px">Muhammed Recep için umut ol…</p>
       <div class="actions in d5">
         <a class="btn btn-gold pulse" href="#bagis">Hemen Bağış Yap</a>
-        <a class="btn btn-ghost" href="#paylas">Paylaş</a>
+        <a class="btn btn-ghost" href="kart.html">Kartla Bağış</a>
       </div>
       <div class="quick in d5">
         <div class="lbl">Hızlı kopyala · TL hesabı (Türkiye İş Bankası)</div>
@@ -412,6 +420,11 @@ footer .legal a:hover{color:var(--navy)}
       <button class="btn btn-ghost btn-sm copy" id="c-alici" data-target="alici">Alıcıyı Kopyala</button>
     </div>
     <p class="warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>Lütfen yalnızca bu sayfadaki ve Valilik izin belgesindeki hesaplara bağış yapın. Kampanya adına size özel mesajla farklı bir hesap bildirilirse itibar etmeyin.</p>
+    <a class="card-cta reveal" href="kart.html">
+      <span class="cc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M2.5 10h19M6.5 15h4"/></svg></span>
+      <span class="cc-txt"><b>Kredi veya banka kartıyla bağış</b><span>Havale yapamıyorsanız bağış kartlarımızla Shopier üzerinden güvenle ödeyebilirsiniz.</span></span>
+      <span class="btn btn-gold btn-sm">Kartla Bağış Yap →</span>
+    </a>
   </div>
 </section>
 
@@ -531,7 +544,7 @@ footer .legal a:hover{color:var(--navy)}
   <span>T.C. Valilik İzin No: 34.2026.5293 · İstanbul Valiliği · Yetki Sahibi: Adalet Biradlı</span>
   <a href="https://instagram.com/sma.muhammedrecep.biradli" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:800"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>@sma.muhammedrecep.biradli</a>
   <span>Bu kampanya 2860 sayılı Yardım Toplama Kanunu kapsamında yürütülmektedir.</span>
-  <nav class="legal" aria-label="Yasal bilgiler"><a href="kvkk.html">KVKK Aydınlatma Metni</a><a href="gizlilik.html">Gizlilik Politikası</a><a href="erisilebilirlik.html">Erişilebilirlik Beyanı</a></nav>
+  <nav class="legal" aria-label="Yasal bilgiler"><a href="kvkk.html">KVKK Aydınlatma Metni</a><a href="gizlilik.html">Gizlilik Politikası</a><a href="erisilebilirlik.html">Erişilebilirlik Beyanı</a><a href="kart.html">Kartla Bağış</a></nav>
 </div></footer>
 
 <div class="sticky"><a class="btn btn-gold pulse" href="#bagis">Bağış Yap · IBAN'ları Gör</a></div>
