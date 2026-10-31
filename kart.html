@@ -122,7 +122,7 @@ footer nav a[aria-current]{color:var(--navy)}
 </div>
 
 <section aria-label="Bağış kartları">
-  <div class="cards">
+  <div class="cards" id="cards">
     <article class="kcard">
       <a class="kimg" href="https://www.shopier.com/smamuhammedrecepbiradli/52398407" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_be2c4e08b42a3f89c23d0b4bef857f4a.jpg" alt="" width="458" height="458" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></a>
       <div class="top"><span class="tag">Bağış Kartı</span><span class="chip" aria-hidden="true"></span></div>
@@ -214,5 +214,137 @@ footer nav a[aria-current]{color:var(--navy)}
   <span>T.C. İstanbul Valiliği İzin No: 34.2026.5293 · Yetki Sahibi: Adalet Biradlı</span>
   <span>Bu kampanya 2860 sayılı Yardım Toplama Kanunu kapsamında yürütülmektedir.</span>
 </div></footer>
+<script id="site-data" type="application/json">{"guncelleme": "2026-10-31T19:00:00+03:00", "ilerleme": {"yuzde": 1, "toplanan": "", "hedef": "", "not": "Kampanya yeni başladı. Her bağış bu çubuğu bir adım ileri taşıyor."}, "duyurular": [{"tarih": "2026-10-30", "baslik": "Web sitemiz yayında", "metin": "Kampanyamızın resmi web sitesi www.recepeumutol.com.tr adresinde yayına girdi. Bağış bilgilerine buradan güvenle ulaşabilir, sayfayı paylaşarak destek olabilirsiniz."}, {"tarih": "2026-10-28", "baslik": "Valilik iznimiz çıktı", "metin": "Muhammed Recep için yardım kampanyamız İstanbul Valiliği'nin 34.2026.5293 sayılı izniyle resmi olarak başladı."}], "havaleTutarlari": [{"tutar": 250, "etiket": "Bir nefes"}, {"tutar": 500, "etiket": "Bir gülüş"}, {"tutar": 1000, "etiket": "Bir umut"}, {"tutar": 2500, "etiket": "Büyük umut"}, {"tutar": 5000, "etiket": "Mucize desteği"}, {"tutar": 10000, "etiket": "Hayat desteği"}, {"tutar": 20000, "etiket": "Kahraman desteği"}], "kartlar": [{"tutar": 50, "etiket": "Bir damla", "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398407", "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_be2c4e08b42a3f89c23d0b4bef857f4a.jpg"}, {"tutar": 100, "etiket": "Bir adım", "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398462", "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_5af6fa73e495eecce1b6039c5d593e65.jpg"}, {"tutar": 500, "etiket": "Bir gülüş", "link": "https://www.shopier.com/smamuhammedrecepbiradli/52396400", "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_9805e71cda55067d448bb533f665c9c4.jpg"}, {"tutar": 1000, "etiket": "Bir umut", "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398285", "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_cbf2c7a2fd3765b36741d41ed836cacc.jpg"}, {"tutar": 2000, "etiket": "Bir nefes", "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398351", "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_63a0e74ae4d97a710e3fa0a228e257f7.jpg"}, {"tutar": 4000, "etiket": "Güçlü destek", "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398483", "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_ecaddb26547559c966e99d403026c8ec.jpg"}, {"tutar": 6000, "etiket": "Büyük umut", "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398510", "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_7b50df1da6a770e1f5fa777445584380.jpg"}, {"tutar": 8000, "etiket": "Mucize desteği", "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398531", "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_a9a808e92701b9d855e478a6898f4b4c.jpg"}, {"tutar": 10000, "etiket": "Kahraman desteği", "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398556", "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_2c11acb7dc69cf33f6b6acce2eaf0b74.jpg"}], "galeri": [{"src": "galeri-1.jpg", "alt": "SMA Tip 2 mücadelemizde senin desteğine ihtiyacımız var afişi", "link": "https://instagram.com/sma.muhammedrecep.biradli"}, {"src": "galeri-2.jpg", "alt": "Valilik iznimiz çıktı afişi: İstanbul Valiliği, İzin No 34.2026.5293", "link": "https://instagram.com/sma.muhammedrecep.biradli"}]}</script>
+<script>/* Muhammed Recep sitesi: data.json'dan dinamik bölümleri çizer. */
+(function () {
+  'use strict';
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function tl(n) {
+    var v = Math.round(Number(n) || 0);
+    return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+  var AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+  function tarih(s) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(s || '');
+    if (!m) return esc(s);
+    return Number(m[3]) + ' ' + AYLAR[Number(m[2]) - 1] + ' ' + m[1];
+  }
+  function safeUrl(u) {
+    u = String(u || '').trim();
+    if (/^https:\/\//i.test(u)) return u;
+    if (/^[\w\-./]+\.(jpe?g|png|webp|gif)$/i.test(u) && u.indexOf('..') === -1) return u;
+    return '';
+  }
+  function $(id) { return document.getElementById(id); }
+
+  function renderProgress(p) {
+    if (!p || !$('pct-num')) return;
+    var y = Math.max(0, Math.min(100, Number(p.yuzde) || 0));
+    var yTxt = (Math.round(y * 10) / 10).toString().replace('.', ',');
+    $('pct-num').textContent = '%' + yTxt;
+    var bar = $('pc-bar');
+    bar.setAttribute('aria-valuenow', String(y));
+    bar.setAttribute('aria-label', 'Kampanya ilerlemesi yüzde ' + yTxt);
+    $('pc-fill').style.setProperty('--p', y + '%');
+    var amt = $('pc-amounts');
+    var parts = [];
+    if (p.toplanan) parts.push('<span>Toplanan: <b>' + esc(p.toplanan) + '</b></span>');
+    if (p.hedef) parts.push('<span>Hedef: <b>' + esc(p.hedef) + '</b></span>');
+    amt.innerHTML = parts.join('');
+    amt.hidden = parts.length === 0;
+    if (p.not) $('pc-note').textContent = p.not;
+  }
+
+  function renderNews(list) {
+    var box = $('news-list');
+    if (!box) return;
+    list = (list || []).filter(function (d) { return d && (d.baslik || d.metin); });
+    $('duyurular').hidden = list.length === 0;
+    box.innerHTML = list.map(function (d, i) {
+      return '<article class="news-item' + (i === 0 ? ' latest' : '') + '">' +
+        '<time datetime="' + esc(d.tarih) + '">' + tarih(d.tarih) + '</time>' +
+        (i === 0 ? '<span class="news-new">Yeni</span>' : '') +
+        '<h3>' + esc(d.baslik) + '</h3>' +
+        (d.metin ? '<p>' + esc(d.metin).replace(/\n/g, '<br>') + '</p>' : '') +
+        '</article>';
+    }).join('');
+  }
+
+  function renderAmounts(list) {
+    var box = $('amounts');
+    if (!box) return;
+    list = (list || []).filter(function (a) { return a && Number(a.tutar) > 0; });
+    if (!list.length) return;
+    box.innerHTML = list.map(function (a, i) {
+      return '<button type="button" class="amt" id="amt-' + i + '" data-v="' + tl(a.tutar) + '" aria-pressed="' + (i === 0) + '">' +
+        '<b>' + tl(a.tutar) + ' ₺</b><span>' + esc(a.etiket) + '</span></button>';
+    }).join('');
+    $('amt-val').textContent = tl(list[0].tutar) + ' ₺';
+  }
+
+  function renderGallery(list) {
+    var box = $('gallery');
+    if (!box) return;
+    list = (list || []).filter(function (g) { return g && safeUrl(g.src); });
+    $('afisler').hidden = list.length === 0;
+    box.innerHTML = list.map(function (g) {
+      var link = safeUrl(g.link) || safeUrl(g.src);
+      return '<a class="g-item" href="' + esc(link) + '" target="_blank" rel="noopener">' +
+        '<img src="' + esc(safeUrl(g.src)) + '" alt="' + esc(g.alt || 'Kampanya afişi') + '" loading="lazy" decoding="async"></a>';
+    }).join('');
+  }
+
+  var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  function renderCards(list) {
+    var box = $('cards');
+    if (!box) return;
+    list = (list || []).filter(function (k) { return k && Number(k.tutar) > 0 && safeUrl(k.link); });
+    box.innerHTML = list.map(function (k) {
+      var link = esc(safeUrl(k.link));
+      var img = safeUrl(k.gorsel);
+      return '<article class="kcard">' +
+        (img ? '<a class="kimg" href="' + link + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="' + esc(img) + '" alt="" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></a>' : '') +
+        '<div class="top"><span class="tag">Bağış Kartı</span><span class="chip" aria-hidden="true"></span></div>' +
+        '<div class="amt">' + tl(k.tutar) + '<small>₺</small></div>' +
+        '<div class="lbl">' + esc(k.etiket) + '</div>' +
+        '<a class="pay" href="' + link + '" target="_blank" rel="noopener" aria-label="' + tl(k.tutar) + ' TL bağış kartı için Shopier ödeme sayfasına git">Ödeme Yap ' + ARROW + '</a>' +
+        '</article>';
+    }).join('');
+  }
+
+  function renderAll(d) {
+    if (!d) return;
+    try { renderProgress(d.ilerleme); } catch (e) {}
+    try { renderNews(d.duyurular); } catch (e) {}
+    try { renderAmounts(d.havaleTutarlari); } catch (e) {}
+    try { renderGallery(d.galeri); } catch (e) {}
+    try { renderCards(d.kartlar); } catch (e) {}
+  }
+
+  // Tutar seçimi (dinamik butonlar için olay delegasyonu)
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest && ev.target.closest('.amt');
+    if (!b || !$('amounts') || !$('amounts').contains(b)) return;
+    $('amounts').querySelectorAll('.amt').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+    b.setAttribute('aria-pressed', 'true');
+    $('amt-val').textContent = b.dataset.v + ' ₺';
+  });
+
+  // 1) Sayfaya gömülü veriyle hemen çiz, 2) güncel data.json ile tazele
+  var baked = document.getElementById('site-data');
+  if (baked) { try { renderAll(JSON.parse(baked.textContent)); } catch (e) {} }
+  if (window.fetch) {
+    fetch('data.json?v=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(renderAll)
+      .catch(function () {});
+  }
+})();
+</script>
 </body>
 </html>

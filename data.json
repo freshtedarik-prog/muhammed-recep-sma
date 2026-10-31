@@ -1,0 +1,119 @@
+{
+  "guncelleme": "2026-10-31T19:00:00+03:00",
+  "ilerleme": {
+    "yuzde": 1,
+    "toplanan": "",
+    "hedef": "",
+    "not": "Kampanya yeni başladı. Her bağış bu çubuğu bir adım ileri taşıyor."
+  },
+  "duyurular": [
+    {
+      "tarih": "2026-10-30",
+      "baslik": "Web sitemiz yayında",
+      "metin": "Kampanyamızın resmi web sitesi www.recepeumutol.com.tr adresinde yayına girdi. Bağış bilgilerine buradan güvenle ulaşabilir, sayfayı paylaşarak destek olabilirsiniz."
+    },
+    {
+      "tarih": "2026-10-28",
+      "baslik": "Valilik iznimiz çıktı",
+      "metin": "Muhammed Recep için yardım kampanyamız İstanbul Valiliği'nin 34.2026.5293 sayılı izniyle resmi olarak başladı."
+    }
+  ],
+  "havaleTutarlari": [
+    {
+      "tutar": 250,
+      "etiket": "Bir nefes"
+    },
+    {
+      "tutar": 500,
+      "etiket": "Bir gülüş"
+    },
+    {
+      "tutar": 1000,
+      "etiket": "Bir umut"
+    },
+    {
+      "tutar": 2500,
+      "etiket": "Büyük umut"
+    },
+    {
+      "tutar": 5000,
+      "etiket": "Mucize desteği"
+    },
+    {
+      "tutar": 10000,
+      "etiket": "Hayat desteği"
+    },
+    {
+      "tutar": 20000,
+      "etiket": "Kahraman desteği"
+    }
+  ],
+  "kartlar": [
+    {
+      "tutar": 50,
+      "etiket": "Bir damla",
+      "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398407",
+      "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_be2c4e08b42a3f89c23d0b4bef857f4a.jpg"
+    },
+    {
+      "tutar": 100,
+      "etiket": "Bir adım",
+      "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398462",
+      "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_5af6fa73e495eecce1b6039c5d593e65.jpg"
+    },
+    {
+      "tutar": 500,
+      "etiket": "Bir gülüş",
+      "link": "https://www.shopier.com/smamuhammedrecepbiradli/52396400",
+      "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_9805e71cda55067d448bb533f665c9c4.jpg"
+    },
+    {
+      "tutar": 1000,
+      "etiket": "Bir umut",
+      "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398285",
+      "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_cbf2c7a2fd3765b36741d41ed836cacc.jpg"
+    },
+    {
+      "tutar": 2000,
+      "etiket": "Bir nefes",
+      "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398351",
+      "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_63a0e74ae4d97a710e3fa0a228e257f7.jpg"
+    },
+    {
+      "tutar": 4000,
+      "etiket": "Güçlü destek",
+      "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398483",
+      "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_ecaddb26547559c966e99d403026c8ec.jpg"
+    },
+    {
+      "tutar": 6000,
+      "etiket": "Büyük umut",
+      "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398510",
+      "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_7b50df1da6a770e1f5fa777445584380.jpg"
+    },
+    {
+      "tutar": 8000,
+      "etiket": "Mucize desteği",
+      "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398531",
+      "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_a9a808e92701b9d855e478a6898f4b4c.jpg"
+    },
+    {
+      "tutar": 10000,
+      "etiket": "Kahraman desteği",
+      "link": "https://www.shopier.com/smamuhammedrecepbiradli/52398556",
+      "gorsel": "https://cdn.shopier.app/pictures_mid/smamuhammedrecepbiradli_2c11acb7dc69cf33f6b6acce2eaf0b74.jpg"
+    }
+  ],
+  "galeri": [
+    {
+      "src": "galeri-1.jpg",
+      "alt": "SMA Tip 2 mücadelemizde senin desteğine ihtiyacımız var afişi",
+      "link": "https://instagram.com/sma.muhammedrecep.biradli"
+    },
+    {
+      "src": "galeri-2.jpg",
+      "alt": "Valilik iznimiz çıktı afişi: İstanbul Valiliği, İzin No 34.2026.5293",
+      "link": "https://instagram.com/sma.muhammedrecep.biradli"
+    }
+  ]
+}

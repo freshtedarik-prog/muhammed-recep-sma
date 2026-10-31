@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Yönetim Paneli · Muhammed Recep İçin Umut Ol</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23e0525f' d='M12 21s-7.5-4.6-9.6-9.2C1 8.6 3 5 6.6 5c2 0 3.4 1.1 4.4 2.5C12 6.1 13.4 5 15.4 5 19 5 21 8.6 19.6 11.8 17.5 16.4 12 21 12 21z'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@400;700;800;900&display=swap">
+<style>
+/* Layout: tek sütun, sekmeli editör, altta sabit "Kaydet ve Yayınla" çubuğu */
+:root{
+  --bg:#f6f3ee; --surface:#ffffff; --sky:#e6eef7;
+  --navy:#1e3a5f; --on-navy:#ffffff; --caramel-ink:#94592a; --caramel-soft:#f3e3cf;
+  --fg:#1f2a37; --muted:#56606f; --line:#e2dbd0; --ok:#2f7d4f; --ok-soft:#dff3e6; --err:#b42335; --err-soft:#fde4e7;
+  --f-display:"Baloo 2","Nunito",system-ui,sans-serif;
+  --f-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111823; --surface:#1a2330; --sky:#182637; --navy:#a9c8ee; --on-navy:#0f1824; --caramel-ink:#e9b985; --caramel-soft:#3a2d20;
+  --fg:#eef1f5; --muted:#a8b3c2; --line:#2a3546; --ok:#6cc792; --ok-soft:#1d3527; --err:#ff8a98; --err-soft:#3a1f25; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111823; --surface:#1a2330; --sky:#182637; --navy:#a9c8ee; --on-navy:#0f1824; --caramel-ink:#e9b985; --caramel-soft:#3a2d20;
+  --fg:#eef1f5; --muted:#a8b3c2; --line:#2a3546; --ok:#6cc792; --ok-soft:#1d3527; --err:#ff8a98; --err-soft:#3a1f25; color-scheme:dark}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+[hidden]{display:none!important}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);color:var(--navy);line-height:1.2;margin:0}
+p{margin:0}
+a{color:var(--navy)}
+:focus-visible{outline:3px solid var(--caramel-ink);outline-offset:2px;border-radius:6px}
+header{background:var(--navy);color:var(--on-navy)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px;flex-wrap:wrap}
+header h1{color:var(--on-navy);font-size:20px;display:flex;align-items:center;gap:8px}
+header h1 svg{width:22px;height:22px;color:#e0525f}
+header .hdr-actions{display:flex;gap:8px;flex-wrap:wrap}
+header a,header button{color:var(--on-navy);background:transparent;border:1.5px solid currentColor;border-radius:999px;padding:6px 12px;font:inherit;font-weight:800;font-size:14px;text-decoration:none;cursor:pointer;opacity:.95}
+main .wrap{padding-block:20px;display:grid;gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px}
+.stack{display:grid;gap:12px}
+label{display:grid;gap:4px;font-weight:800;font-size:14px;color:var(--fg)}
+label small{font-weight:600;color:var(--muted)}
+input[type=text],input[type=password],input[type=number],input[type=url],input[type=date],textarea{width:100%;font:inherit;font-weight:600;color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0}
+textarea{min-height:90px;resize:vertical}
+input:focus,textarea:focus{border-color:var(--navy);outline:none}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font:inherit;font-weight:800;border-radius:999px;padding:10px 18px;border:2px solid var(--navy);background:var(--navy);color:var(--on-navy);cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--navy)}
+.btn.sm{padding:6px 12px;font-size:14px}
+.btn.danger{background:transparent;color:var(--err);border-color:var(--err)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.icon-btn{width:36px;height:36px;padding:0;border-radius:10px;background:var(--bg);color:var(--fg);border:1.5px solid var(--line);font-weight:900;cursor:pointer}
+.icon-btn.del{color:var(--err)}
+.msg{border-radius:12px;padding:10px 14px;font-weight:700;font-size:15px}
+.msg.err{background:var(--err-soft);color:var(--err)}
+.msg.ok{background:var(--ok-soft);color:var(--ok)}
+.hint{color:var(--muted);font-size:14px}
+details.help{background:var(--sky);border-radius:14px;padding:10px 14px}
+details.help summary{cursor:pointer;font-weight:900;color:var(--navy)}
+details.help ol{margin:8px 0 0;padding-left:20px;display:grid;gap:4px;font-size:15px}
+.login{max-width:440px;margin:24px auto 0}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.tab{flex:none;font:inherit;font-weight:800;font-size:15px;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:8px 14px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--navy);color:var(--on-navy);border-color:var(--navy)}
+.item{border:1.5px solid var(--line);border-radius:16px;padding:14px;display:grid;gap:10px;background:var(--bg)}
+.item-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.item-head b{font-family:var(--f-display);color:var(--navy);font-size:18px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item-tools{display:flex;gap:6px;flex:none}
+.thumb{width:72px;height:72px;border-radius:12px;object-fit:cover;background:var(--sky);flex:none;border:1px solid var(--line)}
+.with-thumb{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:start}
+.gal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.gal-item{min-width:0}
+.gal-item img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;background:var(--sky);display:block}
+.preview{display:grid;gap:8px;background:var(--bg);border-radius:14px;padding:14px}
+.pv-top{display:flex;justify-content:space-between;align-items:baseline}
+.pv-top b{font-family:var(--f-display);font-size:34px;color:var(--navy);font-variant-numeric:tabular-nums}
+.bar{height:16px;border-radius:999px;background:var(--sky);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#c58b52,#e0525f);min-width:12px;transition:width .3s}
+input[type=range]{width:100%;accent-color:#c58b52}
+.savebar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -8px 24px -16px rgba(0,0,0,.35);padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.savebar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0}
+.savebar .st{font-size:14px;font-weight:700;color:var(--muted);min-width:0}
+.savebar .st.dirty{color:var(--caramel-ink)}
+.savebar .btn{background:var(--caramel-ink);border-color:var(--caramel-ink);color:#fff}
+.toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:40;max-width:calc(100% - 32px);background:var(--fg);color:var(--bg);border-radius:14px;padding:12px 16px;font-weight:800;box-shadow:0 12px 30px -12px rgba(0,0,0,.5)}
+.upload{display:flex;align-items:center;justify-content:center;gap:8px;border:2px dashed var(--caramel-ink);border-radius:16px;padding:18px;color:var(--caramel-ink);font-weight:900;cursor:pointer;text-align:center}
+.upload input{position:absolute;width:1px;height:1px;opacity:0}
+@media (max-width:560px){.row{grid-template-columns:1fr}.gal-grid{grid-template-columns:1fr}.gal-item img{aspect-ratio:auto;max-height:340px;object-fit:contain}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 3 5 6.6 5c2 0 3.4 1.1 4.4 2.5C12 6.1 13.4 5 15.4 5 19 5 21 8.6 19.6 11.8 17.5 16.4 12 21 12 21z"/></svg>Yönetim Paneli</h1>
+  <div class="hdr-actions">
+    <a href="index.html" target="_blank" rel="noopener">Siteyi Gör ↗</a>
+    <button type="button" id="btn-lock" hidden>Kilitle</button>
+  </div>
+</div></header>
+
+<main><div class="wrap">
+
+  <!-- İLK KURULUM -->
+  <section class="card login stack" id="v-setup" hidden>
+    <h2>İlk Kurulum</h2>
+    <p class="hint">Bu cihazda paneli ilk kez açıyorsunuz. GitHub anahtarını bir kez girip kendinize bir PIN belirleyin. Sonraki girişlerde sadece PIN yeterli olacak.</p>
+    <details class="help">
+      <summary>GitHub anahtarı nasıl alınır?</summary>
+      <ol>
+        <li>github.com'a <b>freshtedarik-prog</b> hesabıyla giriş yapın.</li>
+        <li>Sağ üstte profil resmi → <b>Settings</b> → en altta <b>Developer settings</b>.</li>
+        <li><b>Personal access tokens</b> → <b>Fine-grained tokens</b> → <b>Generate new token</b>.</li>
+        <li>Token name: <b>Site paneli</b>. Expiration: en uzun süreyi seçin.</li>
+        <li>Repository access: <b>Only select repositories</b> → <b>muhammed-recep-sma</b>.</li>
+        <li>Permissions → Repository permissions → <b>Contents</b>: <b>Read and write</b>.</li>
+        <li><b>Generate token</b>'a basın, <b>github_pat_</b> ile başlayan anahtarı kopyalayıp aşağıya yapıştırın.</li>
+      </ol>
+      <p class="hint" style="margin-top:8px">Bu anahtar yalnızca bu sitenin dosyalarını değiştirebilir. Kimseyle paylaşmayın.</p>
+    </details>
+    <label for="in-token">GitHub anahtarı<input type="password" id="in-token" autocomplete="off" spellcheck="false" placeholder="github_pat_…"></label>
+    <div class="row">
+      <label for="in-pin1">PIN belirleyin <small>(en az 4 hane)</small><input type="password" id="in-pin1" inputmode="numeric" autocomplete="new-password"></label>
+      <label for="in-pin2">PIN tekrar<input type="password" id="in-pin2" inputmode="numeric" autocomplete="new-password"></label>
+    </div>
+    <div class="msg err" id="setup-err" hidden></div>
+    <button type="button" class="btn" id="btn-setup">Kurulumu Tamamla</button>
+  </section>
+
+  <!-- PIN İLE GİRİŞ -->
+  <section class="card login stack" id="v-unlock" hidden>
+    <h2>Giriş</h2>
+    <p class="hint">Bu cihazda belirlediğiniz PIN'i girin.</p>
+    <label for="in-pin">PIN<input type="password" id="in-pin" inputmode="numeric" autocomplete="current-password"></label>
+    <div class="msg err" id="unlock-err" hidden></div>
+    <button type="button" class="btn" id="btn-unlock">Giriş Yap</button>
+    <button type="button" class="btn ghost sm" id="btn-reset">PIN'i unuttum / anahtarı yeniden gir</button>
+  </section>
+
+  <!-- YÜKLENİYOR -->
+  <section class="card login" id="v-loading" hidden><p class="hint" id="loading-txt">Yükleniyor…</p></section>
+
+  <!-- EDİTÖR -->
+  <section id="v-app" class="stack" hidden>
+    <div class="tabs" role="tablist" aria-label="Bölümler">
+      <button class="tab" role="tab" id="t-ilerleme" aria-controls="p-ilerleme" aria-selected="true">İlerleme</button>
+      <button class="tab" role="tab" id="t-duyurular" aria-controls="p-duyurular" aria-selected="false">Duyurular</button>
+      <button class="tab" role="tab" id="t-kartlar" aria-controls="p-kartlar" aria-selected="false">Bağış Kartları</button>
+      <button class="tab" role="tab" id="t-tutarlar" aria-controls="p-tutarlar" aria-selected="false">Havale Tutarları</button>
+      <button class="tab" role="tab" id="t-galeri" aria-controls="p-galeri" aria-selected="false">Galeri</button>
+    </div>
+
+    <div class="card stack" role="tabpanel" id="p-ilerleme" aria-labelledby="t-ilerleme">
+      <h2>Kampanya İlerlemesi</h2>
+      <div class="preview" aria-hidden="true"><div class="pv-top"><span class="hint">Sitede görünüm</span><b id="pv-pct">%0</b></div><div class="bar"><i id="pv-bar"></i></div></div>
+      <label for="f-yuzde">Tamamlanan yüzde <small>(0–100, örn. 12,5)</small>
+        <input type="number" id="f-yuzde" min="0" max="100" step="0.1" inputmode="decimal"></label>
+      <input type="range" id="f-yuzde-r" min="0" max="100" step="0.5" aria-label="Yüzde kaydırıcı">
+      <div class="row">
+        <label for="f-toplanan">Toplanan tutar <small>(boş bırakılabilir)</small><input type="text" id="f-toplanan" placeholder="örn. 1.250.000 ₺"></label>
+        <label for="f-hedef">Hedef tutar <small>(boş bırakılabilir)</small><input type="text" id="f-hedef" placeholder="örn. 2.500.000 $"></label>
+      </div>
+      <label for="f-not">Çubuğun altındaki not<textarea id="f-not" rows="2"></textarea></label>
+    </div>
+
+    <div class="card stack" role="tabpanel" id="p-duyurular" aria-labelledby="t-duyurular" hidden>
+      <div class="item-head"><h2>Duyurular</h2><button type="button" class="btn sm" id="add-duyuru">+ Yeni Duyuru</button></div>
+      <p class="hint">En üstteki duyuru sitede “Yeni” etiketiyle gösterilir. Hiç duyuru kalmazsa bölüm sitede gizlenir.</p>
+      <div class="stack" id="list-duyurular"></div>
+    </div>
+
+    <div class="card stack" role="tabpanel" id="p-kartlar" aria-labelledby="t-kartlar" hidden>
+      <div class="item-head"><h2>Shopier Bağış Kartları</h2><button type="button" class="btn sm" id="add-kart">+ Kart Ekle</button></div>
+      <details class="help"><summary>Link ve görsel nereden alınır?</summary><ol>
+        <li>Shopier'de kartın sayfasını açın, adres çubuğundaki linki kopyalayıp <b>Shopier linki</b> alanına yapıştırın.</li>
+        <li>Görsel için Shopier'de kart görseline uzun basın → <b>Resim adresini kopyala</b> → <b>Görsel adresi</b> alanına yapıştırın.</li>
+      </ol></details>
+      <div class="stack" id="list-kartlar"></div>
+    </div>
+
+    <div class="card stack" role="tabpanel" id="p-tutarlar" aria-labelledby="t-tutarlar" hidden>
+      <div class="item-head"><h2>Havale Tutarları</h2><button type="button" class="btn sm" id="add-tutar">+ Tutar Ekle</button></div>
+      <p class="hint">Ana sayfadaki “Günün Kahramanı Sen Ol” bölümünde seçilebilen tutarlar. İlk sıradaki tutar seçili gelir.</p>
+      <div class="stack" id="list-tutarlar"></div>
+    </div>
+
+    <div class="card stack" role="tabpanel" id="p-galeri" aria-labelledby="t-galeri" hidden>
+      <h2>Afiş ve Fotoğraf Galerisi</h2>
+      <label class="upload" for="f-upload"><input type="file" id="f-upload" accept="image/*" multiple>📷 Afiş / fotoğraf yükle</label>
+      <p class="hint">Görseller yüklenirken otomatik küçültülür. Silinen görseller sitede gösterilmez.</p>
+      <div class="gal-grid" id="list-galeri"></div>
+    </div>
+  </section>
+</div></main>
+
+<div class="savebar" id="savebar" hidden><div class="wrap">
+  <span class="st" id="save-st">Kaydedilmemiş değişiklik yok</span>
+  <button type="button" class="btn" id="btn-save" disabled>Kaydet ve Yayınla</button>
+</div></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function () {
+  'use strict';
+  var OWNER = 'freshtedarik-prog', REPO = 'muhammed-recep-sma', BRANCH = 'main';
+  var API = 'https://api.github.com/repos/' + OWNER + '/' + REPO;
+  var STORE_KEY = 'mr-admin-v1', FAIL_KEY = 'mr-admin-fail';
+  var token = null, sha = null, D = null, dirty = false, previews = {};
+
+  function $(id) { return document.getElementById(id); }
+  function show(id) { ['v-setup', 'v-unlock', 'v-loading', 'v-app'].forEach(function (v) { $(v).hidden = v !== id; }); $('savebar').hidden = id !== 'v-app'; $('btn-lock').hidden = id !== 'v-app'; }
+  function toast(t, ms) { var el = $('toast'); el.textContent = t; el.hidden = false; clearTimeout(toast._t); toast._t = setTimeout(function () { el.hidden = true; }, ms || 3500); }
+  function err(id, t) { $(id).textContent = t; $(id).hidden = !t; }
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
+  function lsDel(k) { try { localStorage.removeItem(k); } catch (e) {} }
+
+  // ---------- şifreleme (PIN ile AES-GCM) ----------
+  var te = new TextEncoder(), td = new TextDecoder();
+  function b64(u8) { var s = ''; for (var i = 0; i < u8.length; i++) s += String.fromCharCode(u8[i]); return btoa(s); }
+  function unb64(s) { var b = atob(s), u = new Uint8Array(b.length); for (var i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return u; }
+  async function keyFrom(pin, salt) {
+    var base = await crypto.subtle.importKey('raw', te.encode(pin), 'PBKDF2', false, ['deriveKey']);
+    return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: salt, iterations: 250000, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+  }
+  async function encryptToken(tok, pin) {
+    var salt = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12));
+    var ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv: iv }, await keyFrom(pin, salt), te.encode(tok));
+    return JSON.stringify({ s: b64(salt), i: b64(iv), c: b64(new Uint8Array(ct)) });
+  }
+  async function decryptToken(blob, pin) {
+    var o = JSON.parse(blob);
+    var pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(o.i) }, await keyFrom(pin, unb64(o.s)), unb64(o.c));
+    return td.decode(pt);
+  }
+
+  // ---------- GitHub API ----------
+  async function gh(path, opts) {
+    opts = opts || {};
+    var r = await fetch(API + path, {
+      method: opts.method || 'GET',
+      headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' },
+      body: opts.body ? JSON.stringify(opts.body) : undefined,
+      cache: 'no-store'
+    });
+    if (!r.ok) { var e = new Error('GitHub ' + r.status); e.status = r.status; throw e; }
+    return r.status === 204 ? null : r.json();
+  }
+  function utf8b64(str) { return b64(te.encode(str)); }
+  async function checkToken(t) {
+    token = t;
+    var repo = await gh('');
+    if (!repo.permissions || !repo.permissions.push) { var e = new Error('noperm'); e.status = 403; throw e; }
+  }
+  async function loadData() {
+    var f = await gh('/contents/data.json?ref=' + BRANCH);
+    sha = f.sha;
+    D = JSON.parse(td.decode(unb64(f.content.replace(/\s/g, ''))));
+    D.ilerleme = D.ilerleme || { yuzde: 0, toplanan: '', hedef: '', not: '' };
+    ['duyurular', 'havaleTutarlari', 'kartlar', 'galeri'].forEach(function (k) { if (!Array.isArray(D[k])) D[k] = []; });
+  }
+  function apiMsg(e) {
+    if (e.status === 401) return 'GitHub anahtarı geçersiz ya da süresi dolmuş. Yeni bir anahtar oluşturup girin.';
+    if (e.status === 403) return 'Bu anahtarın siteyi değiştirme izni yok. Anahtarda Contents: Read and write izni olduğundan emin olun.';
+    if (e.status === 404) return 'Site deposu bulunamadı. Anahtarı oluştururken muhammed-recep-sma deposunu seçtiğinizden emin olun.';
+    if (e.status === 409) return 'Site başka bir yerden değiştirilmiş. Sayfayı yenileyip tekrar deneyin.';
+    return 'Bağlantı kurulamadı. İnternetinizi kontrol edip tekrar deneyin.';
+  }
+
+  // ---------- giriş akışı ----------
+  async function openApp() {
+    show('v-loading'); $('loading-txt').textContent = 'Site verileri yükleniyor…';
+    await loadData();
+    renderAll(); setDirty(false); show('v-app');
+  }
+  $('btn-setup').addEventListener('click', async function () {
+    var t = $('in-token').value.trim(), p1 = $('in-pin1').value, p2 = $('in-pin2').value;
+    err('setup-err', '');
+    if (!/^(github_pat_|ghp_)/.test(t)) return err('setup-err', 'Anahtar “github_pat_” ile başlamalı. Kopyalarken eksik kalmış olabilir.');
+    if (p1.length < 4) return err('setup-err', 'PIN en az 4 haneli olmalı.');
+    if (p1 !== p2) return err('setup-err', 'İki PIN birbirini tutmuyor.');
+    this.disabled = true; this.textContent = 'Kontrol ediliyor…';
+    try {
+      await checkToken(t);
+      if (!lsSet(STORE_KEY, await encryptToken(t, p1))) toast('Bu tarayıcı anahtarı saklamıyor; her açılışta yeniden girmeniz gerekecek.', 5000);
+      lsDel(FAIL_KEY); $('in-token').value = ''; $('in-pin1').value = ''; $('in-pin2').value = '';
+      await openApp();
+    } catch (e) { token = null; err('setup-err', apiMsg(e)); show('v-setup'); }
+    this.disabled = false; this.textContent = 'Kurulumu Tamamla';
+  });
+  async function unlock() {
+    var pin = $('in-pin').value, btn = $('btn-unlock');
+    err('unlock-err', '');
+    if (!pin) return err('unlock-err', 'PIN girin.');
+    btn.disabled = true; btn.textContent = 'Açılıyor…';
+    try {
+      var t = await decryptToken(lsGet(STORE_KEY), pin);
+      lsDel(FAIL_KEY); $('in-pin').value = '';
+      await checkToken(t);
+      await openApp();
+    } catch (e) {
+      if (e && e.status) { err('unlock-err', apiMsg(e)); }
+      else {
+        var n = (parseInt(lsGet(FAIL_KEY), 10) || 0) + 1; lsSet(FAIL_KEY, String(n));
+        if (n >= 5) { lsDel(STORE_KEY); lsDel(FAIL_KEY); show('v-setup'); err('setup-err', '5 kez yanlış PIN girildiği için anahtar bu cihazdan silindi. Kurulumu yeniden yapın.'); }
+        else err('unlock-err', 'PIN yanlış. Kalan deneme: ' + (5 - n));
+      }
+    }
+    btn.disabled = false; btn.textContent = 'Giriş Yap';
+  }
+  $('btn-unlock').addEventListener('click', unlock);
+  $('in-pin').addEventListener('keydown', function (e) { if (e.key === 'Enter') unlock(); });
+  $('btn-reset').addEventListener('click', function () { lsDel(STORE_KEY); lsDel(FAIL_KEY); show('v-setup'); });
+  $('btn-lock').addEventListener('click', function () {
+    if (dirty && !window.__confirmLock) { window.__confirmLock = true; toast('Kaydedilmemiş değişiklikler var. Kilitlemek için tekrar basın.'); setTimeout(function () { window.__confirmLock = false; }, 4000); return; }
+    token = null; D = null; sha = null; setDirty(false); show(lsGet(STORE_KEY) ? 'v-unlock' : 'v-setup');
+  });
+
+  // ---------- sekmeler ----------
+  var TABS = ['ilerleme', 'duyurular', 'kartlar', 'tutarlar', 'galeri'];
+  TABS.forEach(function (t) {
+    $('t-' + t).addEventListener('click', function () {
+      TABS.forEach(function (x) { $('t-' + x).setAttribute('aria-selected', String(x === t)); $('p-' + x).hidden = x !== t; });
+    });
+  });
+
+  // ---------- kayıt durumu ----------
+  function setDirty(v) {
+    dirty = v;
+    $('btn-save').disabled = !v;
+    $('save-st').textContent = v ? 'Kaydedilmemiş değişiklikler var' : (D && D.guncelleme ? 'Son kayıt: ' + new Date(D.guncelleme).toLocaleString('tr-TR', { dateStyle: 'medium', timeStyle: 'short' }) : 'Kaydedilmemiş değişiklik yok');
+    $('save-st').classList.toggle('dirty', v);
+  }
+  window.addEventListener('beforeunload', function (e) { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+  function validate() {
+    var y = Number(D.ilerleme.yuzde);
+    if (!(y >= 0 && y <= 100)) return 'İlerleme yüzdesi 0 ile 100 arasında olmalı.';
+    for (var i = 0; i < D.kartlar.length; i++) {
+      var k = D.kartlar[i];
+      if (!(Number(k.tutar) > 0)) return (i + 1) + '. bağış kartının tutarı eksik.';
+      if (!/^https:\/\/(www\.)?shopier\.com\//.test(k.link || '')) return (i + 1) + '. bağış kartının Shopier linki “https://www.shopier.com/” ile başlamalı.';
+    }
+    for (var j = 0; j < D.havaleTutarlari.length; j++) if (!(Number(D.havaleTutarlari[j].tutar) > 0)) return (j + 1) + '. havale tutarı eksik.';
+    for (var m = 0; m < D.duyurular.length; m++) if (!D.duyurular[m].baslik) return (m + 1) + '. duyurunun başlığı eksik.';
+    return '';
+  }
+  $('btn-save').addEventListener('click', async function () {
+    var v = validate(); if (v) { toast(v, 5000); return; }
+    var btn = this; btn.disabled = true; btn.textContent = 'Kaydediliyor…';
+    try {
+      D.guncelleme = new Date().toISOString();
+      var res = await gh('/contents/data.json', { method: 'PUT', body: { message: 'Panel: site bilgileri güncellendi', content: utf8b64(JSON.stringify(D, null, 2) + '\n'), sha: sha, branch: BRANCH } });
+      sha = res.content.sha; setDirty(false);
+      toast('Kaydedildi ✓ Değişiklikler 1–2 dakika içinde sitede görünür.', 5000);
+    } catch (e) { toast(apiMsg(e), 6000); btn.disabled = false; }
+    btn.textContent = 'Kaydet ve Yayınla';
+  });
+
+  // ---------- yardımcılar ----------
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    for (var k in (attrs || {})) {
+      if (k === 'text') n.textContent = attrs[k];
+      else if (k.slice(0, 2) === 'on') n.addEventListener(k.slice(2), attrs[k]);
+      else if (attrs[k] !== false && attrs[k] != null) n.setAttribute(k, attrs[k]);
+    }
+    (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
+    return n;
+  }
+  var uid = 0;
+  function field(label, type, value, onInput, extra) {
+    var id = 'f' + (++uid);
+    var inp = el(type === 'textarea' ? 'textarea' : 'input', Object.assign({ id: id }, type === 'textarea' ? { rows: '3' } : { type: type }, extra || {}));
+    inp.value = value == null ? '' : value;
+    inp.addEventListener('input', function () { onInput(inp.value); setDirty(true); });
+    return el('label', { for: id }, [label, inp]);
+  }
+  function tl(n) { return String(Math.round(Number(n) || 0)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function tools(list, i, rerender) {
+    function mv(d) { var j = i + d; if (j < 0 || j >= list.length) return; var x = list[i]; list[i] = list[j]; list[j] = x; setDirty(true); rerender(); }
+    return el('div', { class: 'item-tools' }, [
+      el('button', { type: 'button', class: 'icon-btn', 'aria-label': 'Yukarı taşı', text: '↑', onclick: function () { mv(-1); } }),
+      el('button', { type: 'button', class: 'icon-btn', 'aria-label': 'Aşağı taşı', text: '↓', onclick: function () { mv(1); } }),
+      el('button', { type: 'button', class: 'icon-btn del', 'aria-label': 'Sil', text: '✕', onclick: function () {
+        var b = this; if (b.dataset.armed) { list.splice(i, 1); setDirty(true); rerender(); return; }
+        b.dataset.armed = '1'; b.textContent = 'Sil?'; b.style.width = 'auto'; b.style.padding = '0 10px';
+        setTimeout(function () { if (b.isConnected) { delete b.dataset.armed; b.textContent = '✕'; b.style.width = ''; b.style.padding = ''; } }, 3000);
+      } })
+    ]);
+  }
+
+  // ---------- ilerleme ----------
+  function syncPv() { var y = Math.max(0, Math.min(100, Number(D.ilerleme.yuzde) || 0)); $('pv-pct').textContent = '%' + String(Math.round(y * 10) / 10).replace('.', ','); $('pv-bar').style.width = y + '%'; }
+  function renderIlerleme() {
+    var p = D.ilerleme;
+    $('f-yuzde').value = p.yuzde; $('f-yuzde-r').value = p.yuzde;
+    $('f-toplanan').value = p.toplanan || ''; $('f-hedef').value = p.hedef || ''; $('f-not').value = p.not || '';
+    syncPv();
+  }
+  $('f-yuzde').addEventListener('input', function () { D.ilerleme.yuzde = Number(String(this.value).replace(',', '.')) || 0; $('f-yuzde-r').value = D.ilerleme.yuzde; syncPv(); setDirty(true); });
+  $('f-yuzde-r').addEventListener('input', function () { D.ilerleme.yuzde = Number(this.value); $('f-yuzde').value = this.value; syncPv(); setDirty(true); });
+  $('f-toplanan').addEventListener('input', function () { D.ilerleme.toplanan = this.value; setDirty(true); });
+  $('f-hedef').addEventListener('input', function () { D.ilerleme.hedef = this.value; setDirty(true); });
+  $('f-not').addEventListener('input', function () { D.ilerleme.not = this.value; setDirty(true); });
+
+  // ---------- duyurular ----------
+  function today() { var d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  function renderDuyurular() {
+    var box = $('list-duyurular'); box.textContent = '';
+    if (!D.duyurular.length) box.appendChild(el('p', { class: 'hint', text: 'Henüz duyuru yok.' }));
+    D.duyurular.forEach(function (d, i) {
+      var head = el('b', { text: d.baslik || 'Yeni duyuru' });
+      box.appendChild(el('div', { class: 'item' }, [
+        el('div', { class: 'item-head' }, [head, tools(D.duyurular, i, renderDuyurular)]),
+        el('div', { class: 'row' }, [
+          field('Tarih', 'date', d.tarih, function (v) { d.tarih = v; }),
+          field('Başlık', 'text', d.baslik, function (v) { d.baslik = v; head.textContent = v || 'Yeni duyuru'; }, { maxlength: '90' })
+        ]),
+        field('Metin', 'textarea', d.metin, function (v) { d.metin = v; }, { maxlength: '600' })
+      ]));
+    });
+  }
+  $('add-duyuru').addEventListener('click', function () { D.duyurular.unshift({ tarih: today(), baslik: '', metin: '' }); setDirty(true); renderDuyurular(); var f = $('list-duyurular').querySelector('input[type=text]'); if (f) f.focus(); });
+
+  // ---------- kartlar ----------
+  function renderKartlar() {
+    var box = $('list-kartlar'); box.textContent = '';
+    D.kartlar.forEach(function (k, i) {
+      var head = el('b', { text: tl(k.tutar) + ' ₺ · ' + (k.etiket || '') });
+      var img = el('img', { class: 'thumb', alt: '', src: k.gorsel || '' });
+      img.onerror = function () { img.removeAttribute('src'); };
+      function upd() { head.textContent = tl(k.tutar) + ' ₺ · ' + (k.etiket || ''); }
+      box.appendChild(el('div', { class: 'item' }, [
+        el('div', { class: 'item-head' }, [head, tools(D.kartlar, i, renderKartlar)]),
+        el('div', { class: 'with-thumb' }, [img, el('div', { class: 'stack' }, [
+          el('div', { class: 'row' }, [
+            field('Tutar (₺)', 'number', k.tutar, function (v) { k.tutar = Number(v) || 0; upd(); }, { min: '1', inputmode: 'numeric' }),
+            field('Kısa etiket', 'text', k.etiket, function (v) { k.etiket = v; upd(); }, { maxlength: '30' })
+          ]),
+          field('Shopier linki', 'url', k.link, function (v) { k.link = v.trim(); }, { placeholder: 'https://www.shopier.com/…' }),
+          field('Görsel adresi', 'url', k.gorsel, function (v) { k.gorsel = v.trim(); img.src = k.gorsel; }, { placeholder: 'https://cdn.shopier.app/…' })
+        ])])
+      ]));
+    });
+  }
+  $('add-kart').addEventListener('click', function () { D.kartlar.push({ tutar: 0, etiket: '', link: 'https://www.shopier.com/smamuhammedrecepbiradli/', gorsel: '' }); setDirty(true); renderKartlar(); });
+
+  // ---------- havale tutarları ----------
+  function renderTutarlar() {
+    var box = $('list-tutarlar'); box.textContent = '';
+    D.havaleTutarlari.forEach(function (a, i) {
+      var head = el('b', { text: tl(a.tutar) + ' ₺' });
+      box.appendChild(el('div', { class: 'item' }, [
+        el('div', { class: 'item-head' }, [head, tools(D.havaleTutarlari, i, renderTutarlar)]),
+        el('div', { class: 'row' }, [
+          field('Tutar (₺)', 'number', a.tutar, function (v) { a.tutar = Number(v) || 0; head.textContent = tl(a.tutar) + ' ₺'; }, { min: '1', inputmode: 'numeric' }),
+          field('Kısa etiket', 'text', a.etiket, function (v) { a.etiket = v; }, { maxlength: '30' })
+        ])
+      ]));
+    });
+  }
+  $('add-tutar').addEventListener('click', function () { D.havaleTutarlari.push({ tutar: 0, etiket: '' }); setDirty(true); renderTutarlar(); });
+
+  // ---------- galeri ----------
+  function renderGaleri() {
+    var box = $('list-galeri'); box.textContent = '';
+    if (!D.galeri.length) box.appendChild(el('p', { class: 'hint', text: 'Galeride görsel yok; bölüm sitede gizlenir.' }));
+    D.galeri.forEach(function (g, i) {
+      var img = el('img', { alt: g.alt || '', src: previews[g.src] || g.src, loading: 'lazy' });
+      box.appendChild(el('div', { class: 'item gal-item' }, [
+        img,
+        el('div', { class: 'item-head' }, [el('span', { class: 'hint', text: (i + 1) + '. görsel' }), tools(D.galeri, i, renderGaleri)]),
+        field('Açıklama (görme engelliler için)', 'text', g.alt, function (v) { g.alt = v; }, { maxlength: '140' }),
+        field('Tıklayınca açılacak link', 'url', g.link, function (v) { g.link = v.trim(); }, { placeholder: 'https://instagram.com/…' })
+      ]));
+    });
+  }
+  function resize(file) {
+    return new Promise(function (res, rej) {
+      var url = URL.createObjectURL(file), im = new Image();
+      im.onload = function () {
+        var max = 1080, s = Math.min(1, max / Math.max(im.naturalWidth, im.naturalHeight));
+        var c = document.createElement('canvas'); c.width = Math.round(im.naturalWidth * s); c.height = Math.round(im.naturalHeight * s);
+        var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(im, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url); res(c.toDataURL('image/jpeg', 0.85));
+      };
+      im.onerror = function () { URL.revokeObjectURL(url); rej(new Error('img')); };
+      im.src = url;
+    });
+  }
+  $('f-upload').addEventListener('change', async function () {
+    var files = Array.prototype.slice.call(this.files || []); this.value = '';
+    for (var i = 0; i < files.length; i++) {
+      toast('Yükleniyor: ' + (i + 1) + ' / ' + files.length, 60000);
+      try {
+        var dataUrl = await resize(files[i]);
+        var d = new Date(), name = 'uploads/' + d.toISOString().replace(/[-:T]/g, '').slice(0, 14) + '-' + Math.random().toString(36).slice(2, 6) + '.jpg';
+        await gh('/contents/' + name, { method: 'PUT', body: { message: 'Panel: galeriye görsel eklendi', content: dataUrl.split(',')[1], branch: BRANCH } });
+        previews[name] = dataUrl;
+        D.galeri.unshift({ src: name, alt: 'Kampanya afişi', link: 'https://instagram.com/sma.muhammedrecep.biradli' });
+        setDirty(true); renderGaleri();
+      } catch (e) { toast(e.status ? apiMsg(e) : 'Bu dosya okunamadı. JPG veya PNG bir görsel seçin.', 6000); return; }
+    }
+    toast('Görsel eklendi. Sitede görünmesi için “Kaydet ve Yayınla”ya basın.', 5000);
+  });
+
+  function renderAll() { renderIlerleme(); renderDuyurular(); renderKartlar(); renderTutarlar(); renderGaleri(); }
+
+  // ---------- başlangıç ----------
+  if (!window.crypto || !crypto.subtle) { show('v-loading'); $('loading-txt').textContent = 'Bu tarayıcı paneli desteklemiyor. Paneli https:// ile açtığınızdan emin olun veya Chrome / Safari kullanın.'; }
+  else show(lsGet(STORE_KEY) ? 'v-unlock' : 'v-setup');
+})();
+</script>
+</body>
+</html>
