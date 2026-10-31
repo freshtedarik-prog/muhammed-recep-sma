@@ -189,7 +189,8 @@ section{padding-block:clamp(44px,7vw,80px)}
 .warn svg{flex:none;width:20px;height:20px;margin-top:2px;color:var(--caramel)}
 
 /* ===== TUTAR SEÇİCİ ===== */
-.amounts{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.amounts .amt:last-child{grid-column:span 2}
 .amt{background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:16px 10px;text-align:center;cursor:pointer;font:inherit;color:var(--fg);transition:transform .2s,border-color .2s,background .2s}
 .amt:hover{transform:translateY(-3px)}
 .amt b{display:block;font-family:var(--f-display);font-size:28px;color:var(--navy);font-variant-numeric:tabular-nums}
@@ -283,7 +284,8 @@ footer .legal a:hover{color:var(--navy)}
   .stamp-core{inset:24px;font-size:11px}
   .sma,#izin .card{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
-  .amounts{grid-template-columns:repeat(3,1fr)}
+  .amounts{grid-template-columns:repeat(2,1fr)}
+  .amounts .amt:last-child{grid-column:1/-1}
   .sticky{display:block}
   .iban{grid-template-columns:auto 1fr}
   .iban .copy{grid-column:1/-1;width:100%}
@@ -349,7 +351,6 @@ footer .legal a:hover{color:var(--navy)}
         <div class="lbl">Hızlı kopyala · TL hesabı (Türkiye İş Bankası)</div>
         <div class="row"><span class="mono" id="q-iban">TR44 0006 4000 0011 2830 7806 75</span><button class="btn btn-primary btn-sm copy" id="c-q" data-target="q-iban">IBAN Kopyala</button></div>
         <div class="row"><span>Alıcı: <b id="q-name">Muhammed Recep Biradlı</b></span><button class="btn btn-ghost btn-sm copy" id="c-qn" data-target="q-name">Kopyala</button></div>
-        <div class="row"><span>Açıklama: <b id="q-desc">Muhammed Recep Biradlı</b></span><button class="btn btn-ghost btn-sm copy" id="c-qd" data-target="q-desc">Kopyala</button></div>
       </div>
     </div>
   </div>
@@ -410,11 +411,6 @@ footer .legal a:hover{color:var(--navy)}
       <span class="desc" id="alici">Muhammed Recep Biradlı</span>
       <button class="btn btn-ghost btn-sm copy" id="c-alici" data-target="alici">Alıcıyı Kopyala</button>
     </div>
-    <div class="note reveal" style="margin-top:10px">
-      <strong>Açıklama kısmına mutlaka yazınız:</strong>
-      <span class="desc" id="aciklama">Muhammed Recep Biradlı</span>
-      <button class="btn btn-ghost btn-sm copy" id="c-desc" data-target="aciklama">Açıklamayı Kopyala</button>
-    </div>
     <p class="warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>Lütfen yalnızca bu sayfadaki ve Valilik izin belgesindeki hesaplara bağış yapın. Kampanya adına size özel mesajla farklı bir hesap bildirilirse itibar etmeyin.</p>
   </div>
 </section>
@@ -432,6 +428,8 @@ footer .legal a:hover{color:var(--navy)}
       <button class="amt" id="a1000" data-v="1.000" aria-pressed="false"><b>1.000 ₺</b><span>Bir umut</span></button>
       <button class="amt" id="a2500" data-v="2.500" aria-pressed="false"><b>2.500 ₺</b><span>Büyük umut</span></button>
       <button class="amt" id="a5000" data-v="5.000" aria-pressed="false"><b>5.000 ₺</b><span>Mucize desteği</span></button>
+      <button class="amt" id="a10000" data-v="10.000" aria-pressed="false"><b>10.000 ₺</b><span>Hayat desteği</span></button>
+      <button class="amt" id="a20000" data-v="20.000" aria-pressed="false"><b>20.000 ₺</b><span>Kahraman desteği</span></button>
     </div>
     <div class="amt-result">
       <div>Seçtiğiniz destek: <strong id="amt-val">250 ₺</strong></div>
@@ -446,7 +444,7 @@ footer .legal a:hover{color:var(--navy)}
     <div class="steps">
       <div class="step reveal"><div class="n">1</div><h3>IBAN'ı Kopyalayın</h3><p>TL, Dolar veya Euro hesaplarından size uygun olanı seçip kopyalayın.</p></div>
       <div class="step reveal"><div class="n">2</div><h3>Havale / EFT / FAST</h3><p>Mobil bankacılıktan alıcı adı <b>Muhammed Recep Biradlı</b> olarak dilediğiniz tutarı gönderin. Yurt dışından döviz hesaplarına transfer yapabilirsiniz.</p></div>
-      <div class="step reveal"><div class="n">3</div><h3>Açıklamayı Unutmayın</h3><p>Açıklama kısmına <b>Muhammed Recep Biradlı</b> yazın. Böylece bağışınız doğru kayda geçer.</p></div>
+      <div class="step reveal"><div class="n">3</div><h3>Alıcı Adını Kontrol Edin</h3><p>Göndermeden önce alıcı adının <b>Muhammed Recep Biradlı</b> olduğunu kontrol edin. Böylece bağışınız doğru hesaba ulaşır.</p></div>
     </div>
   </div>
 </section>
@@ -505,7 +503,7 @@ footer .legal a:hover{color:var(--navy)}
     <div class="sec-head reveal"><div class="eyebrow">Merak edilenler</div><h2>Sıkça Sorulan Sorular</h2></div>
     <div class="faq">
       <details class="reveal"><summary>Bu kampanya yasal mı?</summary><p>Evet. Kampanya T.C. Valilik tarafından 34.2026.5293 sayılı izinle onaylanmıştır ve 2860 sayılı Yardım Toplama Kanunu kapsamında yürütülmektedir. İzni veren kurum İstanbul Valiliği, yetki sahibi Adalet Biradlı'dır.</p></details>
-      <details class="reveal"><summary>Bağışı nasıl yapabilirim?</summary><p>Bu sayfadaki TL, USD veya EUR hesaplarından birine mobil bankacılık ya da şubeden havale, EFT veya FAST ile gönderebilirsiniz. Alıcı adı “Muhammed Recep Biradlı”dır. Açıklama kısmına “Muhammed Recep Biradlı” yazmayı unutmayın.</p></details>
+      <details class="reveal"><summary>Bağışı nasıl yapabilirim?</summary><p>Bu sayfadaki TL, USD veya EUR hesaplarından birine mobil bankacılık ya da şubeden havale, EFT veya FAST ile gönderebilirsiniz. Alıcı adı “Muhammed Recep Biradlı”dır.</p></details>
       <details class="reveal"><summary>Yurt dışından bağış yapabilir miyim?</summary><p>Evet. Bulunduğunuz ülkeden USD veya EUR hesabımıza uluslararası transfer yapabilirsiniz. Banka size SWIFT kodu sorarsa Türkiye İş Bankası'nın SWIFT kodunu bankanızdan teyit edin.</p></details>
       <details class="reveal"><summary>Bağışımın doğru yere gittiğinden nasıl emin olurum?</summary><p>Sadece bu sayfada ve afişte yazan hesaplara bağış yapın. Valilik izinli yardım kampanyaları e-Devlet üzerinden sorgulanabilir. Kampanya adına size farklı bir hesap bildiren mesajlara itibar etmeyin.</p></details>
       <details class="reveal"><summary>Maddi destek olamıyorum, ne yapabilirim?</summary><p>Bu sayfayı WhatsApp gruplarınızda ve sosyal medyada paylaşmanız bile çok değerli. Her paylaşım kampanyanın daha çok kişiye ulaşmasını sağlar.</p></details>
