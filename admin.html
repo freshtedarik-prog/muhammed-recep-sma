@@ -40,6 +40,7 @@ header a,header button{color:var(--on-navy);background:transparent;border:1.5px 
 main .wrap{padding-block:20px;display:grid;gap:16px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px}
 .stack{display:grid;gap:12px}
+.stack>*,main .wrap>*,.item>*,details.tr-box>*{min-width:0}
 label{display:grid;gap:4px;font-weight:800;font-size:14px;color:var(--fg)}
 label small{font-weight:600;color:var(--muted)}
 input[type=text],input[type=password],input[type=number],input[type=url],input[type=date],textarea{width:100%;font:inherit;font-weight:600;color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0}
@@ -59,6 +60,10 @@ input:focus,textarea:focus{border-color:var(--navy);outline:none}
 .hint{color:var(--muted);font-size:14px}
 details.help{background:var(--sky);border-radius:14px;padding:10px 14px}
 details.help summary{cursor:pointer;font-weight:900;color:var(--navy)}
+details.tr-box{border:1.5px dashed var(--line);border-radius:14px;padding:8px 12px;background:var(--surface)}
+details.tr-box summary{cursor:pointer;font-weight:800;font-size:14px;color:var(--muted)}
+details.tr-box[open]{display:grid;gap:10px}
+details.tr-box .filled{color:var(--ok)}
 details.help ol{margin:8px 0 0;padding-left:20px;display:grid;gap:4px;font-size:15px}
 .login{max-width:440px;margin:24px auto 0}
 .tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
@@ -162,6 +167,7 @@ input[type=range]{width:100%;accent-color:#c58b52}
         <label for="f-hedef">Hedef tutar <small>(boş bırakılabilir)</small><input type="text" id="f-hedef" placeholder="örn. 2.500.000 $"></label>
       </div>
       <label for="f-not">Çubuğun altındaki not<textarea id="f-not" rows="2"></textarea></label>
+      <div id="not-tr"></div>
     </div>
 
     <div class="card stack" role="tabpanel" id="p-duyurular" aria-labelledby="t-duyurular" hidden>
@@ -378,6 +384,18 @@ input[type=range]{width:100%;accent-color:#c58b52}
     return el('label', { for: id }, [label, inp]);
   }
   function tl(n) { return String(Math.round(Number(n) || 0)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  // İngilizce / Arapça karşılıklar (boş bırakılırsa sitede Türkçesi görünür)
+  function transBox(o, specs) {
+    var filled = specs.some(function (s) { return o[s[0] + '_en'] || o[s[0] + '_ar']; });
+    var sum = el('summary', {}, ['🌐 İngilizce / Arapça ', el('span', { class: filled ? 'filled' : '', text: filled ? '(girildi)' : '(isteğe bağlı)' })]);
+    var kids = [sum];
+    specs.forEach(function (s) {
+      var key = s[0], label = s[1], type = s[2] || 'text';
+      kids.push(field(label + ' · English', type, o[key + '_en'], function (v) { if (v) o[key + '_en'] = v; else delete o[key + '_en']; }, { dir: 'ltr', lang: 'en' }));
+      kids.push(field(label + ' · العربية', type, o[key + '_ar'], function (v) { if (v) o[key + '_ar'] = v; else delete o[key + '_ar']; }, { dir: 'rtl', lang: 'ar' }));
+    });
+    return el('details', { class: 'tr-box' }, kids);
+  }
   function tools(list, i, rerender) {
     function mv(d) { var j = i + d; if (j < 0 || j >= list.length) return; var x = list[i]; list[i] = list[j]; list[j] = x; setDirty(true); rerender(); }
     return el('div', { class: 'item-tools' }, [
@@ -397,6 +415,7 @@ input[type=range]{width:100%;accent-color:#c58b52}
     var p = D.ilerleme;
     $('f-yuzde').value = p.yuzde; $('f-yuzde-r').value = p.yuzde;
     $('f-toplanan').value = p.toplanan || ''; $('f-hedef').value = p.hedef || ''; $('f-not').value = p.not || '';
+    $('not-tr').textContent = ''; $('not-tr').appendChild(transBox(p, [['not', 'Not', 'textarea']]));
     syncPv();
   }
   $('f-yuzde').addEventListener('input', function () { D.ilerleme.yuzde = Number(String(this.value).replace(',', '.')) || 0; $('f-yuzde-r').value = D.ilerleme.yuzde; syncPv(); setDirty(true); });
@@ -418,7 +437,8 @@ input[type=range]{width:100%;accent-color:#c58b52}
           field('Tarih', 'date', d.tarih, function (v) { d.tarih = v; }),
           field('Başlık', 'text', d.baslik, function (v) { d.baslik = v; head.textContent = v || 'Yeni duyuru'; }, { maxlength: '90' })
         ]),
-        field('Metin', 'textarea', d.metin, function (v) { d.metin = v; }, { maxlength: '600' })
+        field('Metin', 'textarea', d.metin, function (v) { d.metin = v; }, { maxlength: '600' }),
+        transBox(d, [['baslik', 'Başlık'], ['metin', 'Metin', 'textarea']])
       ]));
     });
   }
@@ -439,6 +459,7 @@ input[type=range]{width:100%;accent-color:#c58b52}
             field('Tutar (₺)', 'number', k.tutar, function (v) { k.tutar = Number(v) || 0; upd(); }, { min: '1', inputmode: 'numeric' }),
             field('Kısa etiket', 'text', k.etiket, function (v) { k.etiket = v; upd(); }, { maxlength: '30' })
           ]),
+          transBox(k, [['etiket', 'Etiket']]),
           field('Shopier linki', 'url', k.link, function (v) { k.link = v.trim(); }, { placeholder: 'https://www.shopier.com/…' }),
           field('Görsel adresi', 'url', k.gorsel, function (v) { k.gorsel = v.trim(); img.src = k.gorsel; }, { placeholder: 'https://cdn.shopier.app/…' })
         ])])
@@ -457,7 +478,8 @@ input[type=range]{width:100%;accent-color:#c58b52}
         el('div', { class: 'row' }, [
           field('Tutar (₺)', 'number', a.tutar, function (v) { a.tutar = Number(v) || 0; head.textContent = tl(a.tutar) + ' ₺'; }, { min: '1', inputmode: 'numeric' }),
           field('Kısa etiket', 'text', a.etiket, function (v) { a.etiket = v; }, { maxlength: '30' })
-        ])
+        ]),
+        transBox(a, [['etiket', 'Etiket']])
       ]));
     });
   }

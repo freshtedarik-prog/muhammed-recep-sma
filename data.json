@@ -4,18 +4,28 @@
     "yuzde": 0.8,
     "toplanan": "",
     "hedef": "1.815.000 USD",
-    "not": "Kampanya yeni başladı. Her bağış bu çubuğu bir adım ileri taşıyor."
+    "not": "Kampanya yeni başladı. Her bağış bu çubuğu bir adım ileri taşıyor.",
+    "not_en": "The campaign has just begun. Every donation moves this bar one step forward.",
+    "not_ar": "بدأت الحملة للتو، وكل تبرع يدفع هذا الشريط خطوة إلى الأمام."
   },
   "duyurular": [
     {
       "tarih": "2026-10-30",
       "baslik": "Web sitemiz yayında",
-      "metin": "Kampanyamızın resmi web sitesi www.recepeumutol.com.tr adresinde yayına girdi. Bağış bilgilerine buradan güvenle ulaşabilir, sayfayı paylaşarak destek olabilirsiniz."
+      "metin": "Kampanyamızın resmi web sitesi www.recepeumutol.com.tr adresinde yayına girdi. Bağış bilgilerine buradan güvenle ulaşabilir, sayfayı paylaşarak destek olabilirsiniz.",
+      "baslik_en": "Our website is live",
+      "metin_en": "Our campaign's official website is now live at www.recepeumutol.com.tr. You can safely find the donation details here and support us by sharing the page.",
+      "baslik_ar": "موقعنا الإلكتروني متاح الآن",
+      "metin_ar": "أصبح الموقع الرسمي لحملتنا متاحاً على العنوان www.recepeumutol.com.tr. يمكنكم الاطلاع على بيانات التبرع هنا بأمان، ودعمنا بمشاركة الصفحة."
     },
     {
       "tarih": "2026-10-28",
       "baslik": "Valilik iznimiz çıktı",
-      "metin": "Muhammed Recep için yardım kampanyamız İstanbul Valiliği'nin 34.2026.5293 sayılı izniyle resmi olarak başladı."
+      "metin": "Muhammed Recep için yardım kampanyamız İstanbul Valiliği'nin 34.2026.5293 sayılı izniyle resmi olarak başladı.",
+      "baslik_en": "Our Governorship permit has been granted",
+      "metin_en": "Our aid campaign for Muhammed Recep has officially started with permit No. 34.2026.5293 from the Governorship of Istanbul.",
+      "baslik_ar": "صدر تصريح الولاية لحملتنا",
+      "metin_ar": "انطلقت حملة المساعدة الخاصة بمحمد رجب رسمياً بموجب التصريح رقم 34.2026.5293 الصادر عن ولاية إسطنبول."
     }
   ],
   "havaleTutarlari": [
@@ -108,17 +118,23 @@
     {
       "src": "uploads/20261105184943-jymb.jpg",
       "alt": "SMA Tip 2 mücadelemizde senin desteğine ihtiyacımız var afişi",
-      "link": "https://instagram.com/sma.muhammedrecep.biradli"
+      "link": "https://instagram.com/sma.muhammedrecep.biradli",
+      "alt_en": "“We need your support in our SMA Type 2 fight” poster",
+      "alt_ar": "ملصق «نحتاج إلى دعمكم في معركتنا مع SMA من النوع الثاني»"
     },
     {
       "src": "galeri-1.jpg",
       "alt": "SMA Tip 2 mücadelemizde senin desteğine ihtiyacımız var afişi",
-      "link": "https://instagram.com/sma.muhammedrecep.biradli"
+      "link": "https://instagram.com/sma.muhammedrecep.biradli",
+      "alt_en": "“We need your support in our SMA Type 2 fight” poster",
+      "alt_ar": "ملصق «نحتاج إلى دعمكم في معركتنا مع SMA من النوع الثاني»"
     },
     {
       "src": "galeri-2.jpg",
       "alt": "Valilik iznimiz çıktı afişi: İstanbul Valiliği, İzin No 34.2026.5293",
-      "link": "https://instagram.com/sma.muhammedrecep.biradli"
+      "link": "https://instagram.com/sma.muhammedrecep.biradli",
+      "alt_en": "“Our Governorship permit has been granted” poster: Governorship of Istanbul, Permit No 34.2026.5293",
+      "alt_ar": "ملصق «صدر تصريح الولاية»: ولاية إسطنبول، رقم التصريح 34.2026.5293"
     }
   ]
 }
