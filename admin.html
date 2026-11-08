@@ -154,6 +154,7 @@ input[type=range]{width:100%;accent-color:#c58b52}
       <button class="tab" role="tab" id="t-kartlar" aria-controls="p-kartlar" aria-selected="false">Bağış Kartları</button>
       <button class="tab" role="tab" id="t-tutarlar" aria-controls="p-tutarlar" aria-selected="false">Havale Tutarları</button>
       <button class="tab" role="tab" id="t-galeri" aria-controls="p-galeri" aria-selected="false">Galeri</button>
+      <button class="tab" role="tab" id="t-basin" aria-controls="p-basin" aria-selected="false">Basın</button>
     </div>
 
     <div class="card stack" role="tabpanel" id="p-ilerleme" aria-labelledby="t-ilerleme">
@@ -189,6 +190,12 @@ input[type=range]{width:100%;accent-color:#c58b52}
       <div class="item-head"><h2>Havale Tutarları</h2><button type="button" class="btn sm" id="add-tutar">+ Tutar Ekle</button></div>
       <p class="hint">Ana sayfadaki “Günün Kahramanı Sen Ol” bölümünde seçilebilen tutarlar. İlk sıradaki tutar seçili gelir.</p>
       <div class="stack" id="list-tutarlar"></div>
+    </div>
+
+    <div class="card stack" role="tabpanel" id="p-basin" aria-labelledby="t-basin" hidden>
+      <div class="item-head"><h2>Basında Biz</h2><button type="button" class="btn sm" id="add-basin">+ Haber Ekle</button></div>
+      <p class="hint">Kampanyayla ilgili çıkan haberlerin linkleri. Sitede “Basında Biz” bölümünde gösterilir; hiç haber yoksa bölüm gizlenir.</p>
+      <div class="stack" id="list-basin"></div>
     </div>
 
     <div class="card stack" role="tabpanel" id="p-galeri" aria-labelledby="t-galeri" hidden>
@@ -264,7 +271,7 @@ input[type=range]{width:100%;accent-color:#c58b52}
     sha = f.sha;
     D = JSON.parse(td.decode(unb64(f.content.replace(/\s/g, ''))));
     D.ilerleme = D.ilerleme || { yuzde: 0, toplanan: '', hedef: '', not: '' };
-    ['duyurular', 'havaleTutarlari', 'kartlar', 'galeri'].forEach(function (k) { if (!Array.isArray(D[k])) D[k] = []; });
+    ['duyurular', 'havaleTutarlari', 'kartlar', 'galeri', 'basin'].forEach(function (k) { if (!Array.isArray(D[k])) D[k] = []; });
   }
   function apiMsg(e) {
     if (e.status === 401) return 'GitHub anahtarı geçersiz ya da süresi dolmuş. Yeni bir anahtar oluşturup girin.';
@@ -324,7 +331,7 @@ input[type=range]{width:100%;accent-color:#c58b52}
   });
 
   // ---------- sekmeler ----------
-  var TABS = ['ilerleme', 'duyurular', 'kartlar', 'tutarlar', 'galeri'];
+  var TABS = ['ilerleme', 'duyurular', 'kartlar', 'tutarlar', 'galeri', 'basin'];
   TABS.forEach(function (t) {
     $('t-' + t).addEventListener('click', function () {
       TABS.forEach(function (x) { $('t-' + x).setAttribute('aria-selected', String(x === t)); $('p-' + x).hidden = x !== t; });
@@ -350,6 +357,7 @@ input[type=range]{width:100%;accent-color:#c58b52}
     }
     for (var j = 0; j < D.havaleTutarlari.length; j++) if (!(Number(D.havaleTutarlari[j].tutar) > 0)) return (j + 1) + '. havale tutarı eksik.';
     for (var m = 0; m < D.duyurular.length; m++) if (!D.duyurular[m].baslik) return (m + 1) + '. duyurunun başlığı eksik.';
+    for (var q = 0; q < D.basin.length; q++) { if (!D.basin[q].baslik) return (q + 1) + '. haberin başlığı eksik.'; if (!/^https:\/\//.test(D.basin[q].link || '')) return (q + 1) + '. haberin linki “https://” ile başlamalı.'; }
     return '';
   }
   $('btn-save').addEventListener('click', async function () {
@@ -528,7 +536,27 @@ input[type=range]{width:100%;accent-color:#c58b52}
     toast('Görsel eklendi. Sitede görünmesi için “Kaydet ve Yayınla”ya basın.', 5000);
   });
 
-  function renderAll() { renderIlerleme(); renderDuyurular(); renderKartlar(); renderTutarlar(); renderGaleri(); }
+  // ---------- basın ----------
+  function renderBasin() {
+    var box = $('list-basin'); box.textContent = '';
+    if (!D.basin.length) box.appendChild(el('p', { class: 'hint', text: 'Henüz haber yok.' }));
+    D.basin.forEach(function (b, i) {
+      var head = el('b', { text: b.baslik || 'Yeni haber' });
+      box.appendChild(el('div', { class: 'item' }, [
+        el('div', { class: 'item-head' }, [head, tools(D.basin, i, renderBasin)]),
+        el('div', { class: 'row' }, [
+          field('Tarih', 'date', b.tarih, function (v) { b.tarih = v; }),
+          field('Yayın adı', 'text', b.kaynak, function (v) { b.kaynak = v; }, { maxlength: '40', placeholder: 'örn. BaşakHaber' })
+        ]),
+        field('Haber başlığı', 'text', b.baslik, function (v) { b.baslik = v; head.textContent = v || 'Yeni haber'; }, { maxlength: '160' }),
+        field('Haber linki', 'url', b.link, function (v) { b.link = v.trim(); }, { placeholder: 'https://…' }),
+        transBox(b, [['baslik', 'Başlık']])
+      ]));
+    });
+  }
+  $('add-basin').addEventListener('click', function () { D.basin.unshift({ tarih: today(), kaynak: '', baslik: '', link: '' }); setDirty(true); renderBasin(); });
+
+  function renderAll() { renderIlerleme(); renderDuyurular(); renderKartlar(); renderTutarlar(); renderGaleri(); renderBasin(); }
 
   // ---------- başlangıç ----------
   if (!window.crypto || !crypto.subtle) { show('v-loading'); $('loading-txt').textContent = 'Bu tarayıcı paneli desteklemiyor. Paneli https:// ile açtığınızdan emin olun veya Chrome / Safari kullanın.'; }

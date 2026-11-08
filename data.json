@@ -136,5 +136,15 @@
       "alt_en": "“Our Governorship permit has been granted” poster: Governorship of Istanbul, Permit No 34.2026.5293",
       "alt_ar": "ملصق «صدر تصريح الولاية»: ولاية إسطنبول، رقم التصريح 34.2026.5293"
     }
+  ],
+  "basin": [
+    {
+      "tarih": "2026-11-07",
+      "kaynak": "BaşakHaber",
+      "baslik": "Başakşehirli Muhammed Recep Bebek SMA ile Savaşıyor: Destek Bekliyor!",
+      "baslik_en": "Baby Muhammed Recep from Başakşehir Is Fighting SMA and Needs Support",
+      "baslik_ar": "الطفل محمد رجب من باشاك شهير يحارب مرض SMA وينتظر الدعم",
+      "link": "https://www.basakhaber.com/2026/11/07/basaksehirli-muhammed-recep-bebek-sma-ile-savasiyor-destek-bekliyor/"
+    }
   ]
 }
