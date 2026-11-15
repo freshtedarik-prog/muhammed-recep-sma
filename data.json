@@ -1,5 +1,5 @@
 {
-  "guncelleme": "2026-11-15T10:48:46.199Z",
+  "guncelleme": "2026-11-15T10:50:45.526Z",
   "ilerleme": {
     "yuzde": 1.5,
     "toplanan": "",
@@ -143,6 +143,12 @@
     }
   ],
   "basin": [
+    {
+      "tarih": "2026-11-13",
+      "kaynak": "İstanbulTimes",
+      "baslik": "Çaresiz Bir Anne Ve Babanın Derdine Çare Olabilirsiniz",
+      "link": "https://www.istanbultimes.com.tr/caresiz-bir-anne-ve-babanin-derdine-care-olabilirsiniz"
+    },
     {
       "tarih": "2026-11-15",
       "kaynak": "ZEYTİNBURNU HABER",
